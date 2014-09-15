@@ -1,7 +1,24 @@
+<div class="row">
+
 <%- model_class = Invoice -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<!--rango de fechas --> 
+
+<div class="pull-right range-query">
+    <%= form_tag invoices_path, method: :get do %>
+    <%= text_field_tag 'search[date_from]', @search.date_from %>
+    <%= text_field_tag 'search[date_to]', @search.date_to %>
+    <%= submit_tag 'search', clas: 'btn search-button' %>
+    <%end%>
+
+</div>
+
+</div>
+
+
+
 
 <div class="media">
   <div class="media-body">
@@ -22,7 +39,7 @@
         <% @invoices.each do |invoice| %>
           <tr>
             <td><%= link_to invoice.id, invoice_path(invoice) %></td>
-            <td><%= invoice.date %></td>
+            <td><%= invoice.date.strftime("%Y-%m-%d") %></td> <!--strftime este metodo sirve para que sea bn el formato date -->
             <td><%= invoice.company %></td>
             <td><%= invoice.tax %></td>
             <td><%= invoice.salesperson %></td>

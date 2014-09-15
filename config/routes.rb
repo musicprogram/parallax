@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :empleados
+
+  resources :proyects
+
   get 'welcome/index'
   get 'welcome/about'
   get 'welcome/contact'

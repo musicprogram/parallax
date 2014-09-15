@@ -10,7 +10,7 @@
     <%= form_tag invoices_path, method: :get do %>
     <%= text_field_tag 'search[date_from]', @search.date_from %>
     <%= text_field_tag 'search[date_to]', @search.date_to %>
-    <%= submit_tag 'search', clas: 'btn search-button' %>
+    <%= submit_tag 'search', class: 'btn search-button' %>
     <%end%>
 
 </div>

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914225909) do
+ActiveRecord::Schema.define(version: 20140915135221) do
+
+  create_table "empleados", force: true do |t|
+    t.string   "nombre_completo"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "empleados_tareas", id: false, force: true do |t|
+    t.integer "empleado_id", null: false
+    t.integer "tarea_id",    null: false
+  end
 
   create_table "invoices", force: true do |t|
     t.datetime "date"
@@ -21,5 +32,22 @@ ActiveRecord::Schema.define(version: 20140914225909) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "proyects", force: true do |t|
+    t.string   "nombre"
+    t.date     "fecha_entrega"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tareas", force: true do |t|
+    t.string   "nombre"
+    t.decimal  "prioridad"
+    t.integer  "proyect_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tareas", ["proyect_id"], name: "index_tareas_on_proyect_id"
 
 end

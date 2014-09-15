@@ -1,0 +1,30 @@
+<%# app/views/proyectos/_form.html.erb %>
+<%= nested_form_for(@proyect) do |f| %>
+  <% if @proyect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proyect.errors.count, "error") %> prohibited this proyect from being saved:</h2>
+
+      <ul>
+      <% @proyect.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre, 'Nombre del proyecto' %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_entrega %><br>
+    <%= f.date_select :fecha_entrega %>
+  </div>
+  <fieldset id="tareas">
+    <%= f.fields_for :tareas %>
+    <p><%= f.link_to_add "Agregar una tarea", :tareas,class: 'btn search-button' %></p>
+  </fieldset>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

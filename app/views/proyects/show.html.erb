@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @proyect.nombre %>
+</p>
+
+<p>
+  <strong>Fecha entrega:</strong>
+  <%= @proyect.fecha_entrega %>
+</p>
+
+<p>
+  <strong>Tareas:</strong>
+  <p>
+    <% @proyect.tareas.each do |tarea| %>
+      Nombre: <%= tarea.nombre %><br/>
+      Prioridad: <%= tarea.prioridad %>
+      Empleados: <%= tarea.empleados.map(&:nombre_completo).to_sentence %>
+      <hr/>
+    <% end %>
+  </p>
+</p>
+
+<%= link_to 'Edit', edit_proyect_path(@proyect) %> |
+<%= link_to 'Back', proyects_path %>

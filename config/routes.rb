@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :empleados
-
   resources :proyects
+  resources :invoices
+  resources :users, only: [ :create, :new]
+  resources :sessions, only: [ :create]
+
 
   get 'welcome/index'
   get 'welcome/about'
@@ -9,7 +12,9 @@ Rails.application.routes.draw do
   get 'welcome/faq'
   get 'welcome/pricing'
   get 'welcome/features'
-  resources :invoices
+  get 'login'=>'sessions#new'
+  get 'logout'=>'sessions#destroy'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

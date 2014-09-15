@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  resources :companies do 
+    collection { post :import }
+  end
+
   resources :empleados
   resources :proyects
   resources :invoices

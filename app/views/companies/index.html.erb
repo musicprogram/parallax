@@ -43,13 +43,20 @@
 </div>
 <br>
 
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+new_company_path,
+:class => 'btn btn-inverse' %> <br> 
 <!-- Importar compañias en excel -->
 <h3>Import Companies</h3>
-<%= form_tag import_companies_path, multipart: true do %>
-  <%= file_field_tag :file %>
+    <%= form_tag import_companies_path, multipart: true do %>
+    <%= file_field_tag :file %>
     <%= submit_tag "Upload companies", class: 'btn btn-default' %>
 <%end%>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_company_path,
-            :class => 'btn btn-inverse' %>
+<h3>Download File</h3>
+    <%= link_to "Report", companies_path(format: "csv"),class: 'btn btn-inverse' %>
+
+<br> <br>
+
+
